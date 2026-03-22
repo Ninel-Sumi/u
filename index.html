@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flores Amarillas</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* TEXTO */
+.titulo {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  text-align: center;
+  font-size: 2.5em;
+  color: #ffd54f;
+  text-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900;
+  z-index: 5;
+}
+
+/* CONTENEDOR */
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* FLOR */
+.flor {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 🌻 CABEZA */
+.cabeza {
+  position: relative;
+  animation: balanceo 4s ease-in-out infinite;
+  transform-origin: bottom center;
+  z-index: 2;
+}
+
+@keyframes balanceo {
+  0% { transform: rotate(var(--rot)) rotate(-2deg); }
+  50% { transform: rotate(var(--rot)) rotate(2deg); }
+  100% { transform: rotate(var(--rot)) rotate(-2deg); }
+}
+
+/* PÉTALOS */
+.petalo {
+  width: 45px;
+  height: 90px;
+  background: radial-gradient(circle, #ffeb3b, #ff9800);
+  border-radius: 50%;
+  position: absolute;
+  transform-origin: bottom center;
+  box-shadow: 0 0 12px #ffcc00;
+}
+
+/* CENTRO */
+.centro {
+  width: 70px;
+  height: 70px;
+  background: #5a3a0a;
+  border-radius: 50%;
+  position: absolute;
+  top: 40px;
+  left: -12px;
+  z-index: 3;
+}
+
+/* 🌿 TALLO PERFECTAMENTE ALINEADO */
+.tallo {
+  width: 6px;
+  height: 420px;
+  background: linear-gradient(#66bb6a, #1b5e20);
+  position: absolute;
+
+  top: 110px; /* ajustado para salir del centro */
+  left: 50%;
+  transform: translateX(-50%);
+
+  border-radius: 5px;
+  z-index: 1; /* detrás de la flor */
+}
+
+/* HOJAS */
+.hoja {
+  width: 50px;
+  height: 25px;
+  background: linear-gradient(#66bb6a, #1b5e20);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.hoja.izq {
+  transform: rotate(-30deg);
+  left: -45px;
+}
+
+.hoja.der {
+  transform: rotate(30deg);
+  left: 25px;
+}
+
+/* DESTELLOS */
+.destello {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: gold;
+  border-radius: 50%;
+  box-shadow: 0 0 10px gold;
+  animation: subir 6s linear infinite;
+  z-index: 0;
+}
+
+/* CORAZONES */
+.corazon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: gold;
+  transform: rotate(45deg);
+  animation: subir 8s linear infinite;
+  box-shadow: 0 0 10px gold;
+  z-index: 0;
+}
+
+.corazon::before,
+.corazon::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: gold;
+  border-radius: 50%;
+}
+
+.corazon::before { top: -10px; }
+.corazon::after { left: -10px; }
+
+@keyframes subir {
+  0% { transform: translateY(0) rotate(45deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-700px) rotate(45deg); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="titulo">Feliz día de las Flores Amarillas ❤️</div>
+<div class="container" id="flores"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
