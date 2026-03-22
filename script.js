@@ -1,11 +1,5 @@
-// =========================
-// CONTENEDOR DE FLORES
-// =========================
 const contenedor = document.getElementById("flores");
 
-// =========================
-// POSICIONES DE CADA FLOR
-// =========================
 const posiciones = [
   { left: 50, bottom: 460, rot: 0 },
   { left: 40, bottom: 420, rot: -25 },
@@ -15,84 +9,66 @@ const posiciones = [
   { left: 50, bottom: 350, rot: 10 }
 ];
 
-// =========================
-// CREAR FLORES
-// =========================
 posiciones.forEach((pos) => {
 
-  // 🌸 FLOR PRINCIPAL
-  const flor = document.createElement("div");
+  let flor = document.createElement("div");
   flor.className = "flor";
   flor.style.left = pos.left + "%";
   flor.style.bottom = pos.bottom + "px";
 
-  // 🌿 TALLO
-  const tallo = document.createElement("div");
-  tallo.className = "tallo";
+  /* 🌿 TALLO (primero = detrás) */
+  let t = document.createElement("div");
+  t.className = "tallo";
 
-  // 🌿 HOJAS
-  const hojaIzq = document.createElement("div");
-  hojaIzq.className = "hoja izq";
-  hojaIzq.style.top = "240px";
+  let h1 = document.createElement("div");
+  h1.className = "hoja izq";
+  h1.style.top = "240px";
 
-  const hojaDer = document.createElement("div");
-  hojaDer.className = "hoja der";
-  hojaDer.style.top = "290px";
+  let h2 = document.createElement("div");
+  h2.className = "hoja der";
+  h2.style.top = "290px";
 
-  tallo.appendChild(hojaIzq);
-  tallo.appendChild(hojaDer);
-  flor.appendChild(tallo);
+  t.appendChild(h1);
+  t.appendChild(h2);
+  flor.appendChild(t);
 
-  // 🌻 CABEZA DE LA FLOR
-  const cabeza = document.createElement("div");
+  /* 🌻 CABEZA */
+  let cabeza = document.createElement("div");
   cabeza.className = "cabeza";
   cabeza.style.setProperty('--rot', pos.rot + 'deg');
 
-  // PÉTALOS
   for (let i = 0; i < 12; i++) {
-    const petalo = document.createElement("div");
-    petalo.className = "petalo";
-    petalo.style.transform = `rotate(${i * 30}deg)`;
-    cabeza.appendChild(petalo);
+    let p = document.createElement("div");
+    p.className = "petalo";
+    p.style.transform = "rotate(" + (i * 30) + "deg)";
+    cabeza.appendChild(p);
   }
 
-  // CENTRO
-  const centro = document.createElement("div");
-  centro.className = "centro";
-  cabeza.appendChild(centro);
+  let c = document.createElement("div");
+  c.className = "centro";
+  cabeza.appendChild(c);
 
   flor.appendChild(cabeza);
 
-  // AGREGAR FLOR AL CONTENEDOR
   contenedor.appendChild(flor);
 });
 
-// =========================
-// DESTELLOS
-// =========================
+/* DESTELLOS */
 setInterval(() => {
-  const destello = document.createElement("div");
-  destello.className = "destello";
-  destello.style.left = Math.random() * window.innerWidth + "px";
-  destello.style.top = window.innerHeight + "px";
-
-  document.body.appendChild(destello);
-
-  // REMOVER DESTELLO DESPUÉS DE 6s
-  setTimeout(() => destello.remove(), 6000);
+  let d = document.createElement("div");
+  d.className = "destello";
+  d.style.left = Math.random() * window.innerWidth + "px";
+  d.style.top = window.innerHeight + "px";
+  document.body.appendChild(d);
+  setTimeout(() => d.remove(), 6000);
 }, 120);
 
-// =========================
-// CORAZONES
-// =========================
+/* CORAZONES */
 setInterval(() => {
-  const corazon = document.createElement("div");
-  corazon.className = "corazon";
-  corazon.style.left = Math.random() * window.innerWidth + "px";
-  corazon.style.top = window.innerHeight + "px";
-
-  document.body.appendChild(corazon);
-
-  // REMOVER CORAZÓN DESPUÉS DE 8s
-  setTimeout(() => corazon.remove(), 8000);
+  let h = document.createElement("div");
+  h.className = "corazon";
+  h.style.left = Math.random() * window.innerWidth + "px";
+  h.style.top = window.innerHeight + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 8000);
 }, 300);
