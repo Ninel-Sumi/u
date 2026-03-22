@@ -1,206 +1,165 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Flores Amarillas</title>
-  <style>
-    /* =========================
-       ESTILOS GENERALES
-       ========================= */
-    body {
-      margin: 0;
-      height: 100vh;
-      overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(270deg, #000000, #1a0f00, #000000);
-      background-size: 600% 600%;
-      animation: fondo 12s ease infinite;
-    }
+<meta charset="UTF-8">
+<title>Flores Amarillas</title>
 
-    @keyframes fondo {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-    /* =========================
-       TEXTO PRINCIPAL
-       ========================= */
-    .titulo {
-      position: absolute;
-      top: 30px;
-      width: 100%;
-      text-align: center;
-      font-size: 2.5em;
-      color: #ffd54f;
-      text-shadow: 0 0 15px #ffcc00;
-      z-index: 5;
-    }
+/* TEXTO */
+.titulo {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  text-align: center;
+  font-size: 2.5em;
+  color: #ffd54f;
+  text-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900;
+  z-index: 5;
+}
 
-    /* =========================
-       CONTENEDOR PRINCIPAL
-       ========================= */
-    .container {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
+/* CONTENEDOR */
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
-    /* =========================
-       FLORES
-       ========================= */
-    .flor {
-      position: absolute;
-      transform: translateX(-50%);
-      transform-origin: bottom center;
-      animation: balanceo 4s ease-in-out infinite;
-      z-index: 3;
-    }
+/* FLOR */
+.flor {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-    @keyframes balanceo {
-      0% { transform: translateX(-50%) rotate(var(--rot)) rotate(-2deg); }
-      50% { transform: translateX(-50%) rotate(var(--rot)) rotate(2deg); }
-      100% { transform: translateX(-50%) rotate(var(--rot)) rotate(-2deg); }
-    }
+/* 🌻 CABEZA */
+.cabeza {
+  position: relative;
+  animation: balanceo 4s ease-in-out infinite;
+  transform-origin: bottom center;
+  z-index: 2;
+}
 
-    /* 🌻 NÚCLEO Y PÉTALOS */
-    .nucleo {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+@keyframes balanceo {
+  0% { transform: rotate(var(--rot)) rotate(-2deg); }
+  50% { transform: rotate(var(--rot)) rotate(2deg); }
+  100% { transform: rotate(var(--rot)) rotate(-2deg); }
+}
 
-    .petalo {
-      width: 45px;
-      height: 90px;
-      background: radial-gradient(circle, #fff176, #ffeb3b, #ffb300);
-      border-radius: 50%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform-origin: center 60px;
-      box-shadow: 0 0 6px #ffeb3b, 0 0 12px #ffb300;
-      z-index: 2;
-    }
+/* PÉTALOS */
+.petalo {
+  width: 45px;
+  height: 90px;
+  background: radial-gradient(circle, #ffeb3b, #ff9800);
+  border-radius: 50%;
+  position: absolute;
+  transform-origin: bottom center;
+  box-shadow: 0 0 12px #ffcc00;
+}
 
-    .centro {
-      width: 70px;
-      height: 70px;
-      background: radial-gradient(circle, #6d4c41, #3e2723);
-      border-radius: 50%;
-      position: absolute;
-      top: 25px;
-      left: -12px;
-      z-index: 3;
-    }
+/* CENTRO */
+.centro {
+  width: 70px;
+  height: 70px;
+  background: #5a3a0a;
+  border-radius: 50%;
+  position: absolute;
+  top: 40px;
+  left: -12px;
+  z-index: 3;
+}
 
-    /* =========================
-       TALLOS Y HOJAS
-       ========================= */
-    .tallo {
-      width: 6px;
-      height: 420px;
-      background: linear-gradient(#66bb6a, #1b5e20);
-      position: absolute;
-      top: 80px; /* conecta con la flor */
-      left: 50%;
-      transform-origin: top center;
-      border-radius: 5px;
-      z-index: 1;
-    }
+/* 🌿 TALLO PERFECTAMENTE ALINEADO */
+.tallo {
+  width: 6px;
+  height: 420px;
+  background: linear-gradient(#66bb6a, #1b5e20);
+  position: absolute;
 
-    .hoja {
-      width: 50px;
-      height: 25px;
-      background: linear-gradient(#66bb6a, #1b5e20);
-      border-radius: 50%;
-      position: absolute;
-    }
+  top: 110px; /* ajustado para salir del centro */
+  left: 50%;
+  transform: translateX(-50%);
 
-    .hoja.izq {
-      left: -45px;
-      transform: rotate(-30deg);
-    }
+  border-radius: 5px;
+  z-index: 1; /* detrás de la flor */
+}
 
-    .hoja.der {
-      left: 25px;
-      transform: rotate(30deg);
-    }
+/* HOJAS */
+.hoja {
+  width: 50px;
+  height: 25px;
+  background: linear-gradient(#66bb6a, #1b5e20);
+  border-radius: 50%;
+  position: absolute;
+}
 
-    /* =========================
-       MOÑO
-       ========================= */
-    .mono {
-      position: absolute;
-      width: 60px;
-      height: 40px;
-      background: #c77dff;
-      border-radius: 20px;
-      left: 50%;
-      bottom: 120px;
-      transform: translateX(-50%);
-      z-index: 6;
-    }
+.hoja.izq {
+  transform: rotate(-30deg);
+  left: -45px;
+}
 
-    /* =========================
-       DESTELLOS
-       ========================= */
-    .destello {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: gold;
-      border-radius: 50%;
-      animation: subir 6s linear infinite;
-      z-index: 1;
-    }
+.hoja.der {
+  transform: rotate(30deg);
+  left: 25px;
+}
 
-    /* =========================
-       CORAZONES DETRÁS
-       ========================= */
-    .corazon {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: gold;
-      transform: rotate(45deg);
-      animation: subir 8s linear infinite;
-      z-index: 1;
-    }
+/* DESTELLOS */
+.destello {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: gold;
+  border-radius: 50%;
+  box-shadow: 0 0 10px gold;
+  animation: subir 6s linear infinite;
+  z-index: 0;
+}
 
-    .corazon::before,
-    .corazon::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: gold;
-      border-radius: 50%;
-    }
+/* CORAZONES */
+.corazon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: gold;
+  transform: rotate(45deg);
+  animation: subir 8s linear infinite;
+  box-shadow: 0 0 10px gold;
+  z-index: 0;
+}
 
-    .corazon::before { top: -10px; }
-    .corazon::after { left: -10px; }
+.corazon::before,
+.corazon::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: gold;
+  border-radius: 50%;
+}
 
-    @keyframes subir {
-      0% { transform: translateY(0) scale(0.7); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-700px) scale(1); opacity: 0; }
-    }
+.corazon::before { top: -10px; }
+.corazon::after { left: -10px; }
 
-  </style>
+@keyframes subir {
+  0% { transform: translateY(0) rotate(45deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-700px) rotate(45deg); opacity: 0; }
+}
+</style>
 </head>
+
 <body>
-  <!-- TITULO -->
-  <div class="titulo">Feliz día de las Flores Amarillas 💛</div>
 
-  <!-- CONTENEDOR DE FLORES -->
-  <div class="container" id="flores"></div>
+<div class="titulo">Feliz día de las Flores Amarillas ❤️</div>
+<div class="container" id="flores"></div>
 
-  <!-- MOÑO -->
-  <div class="mono"></div>
-
-  <!-- SCRIPT -->
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html> 
