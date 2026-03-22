@@ -16,12 +16,12 @@ body {
 /* TEXTO */
 .titulo {
   position: absolute;
-  top: 3vh;
+  top: 30px;
   width: 100%;
   text-align: center;
-  font-size: 4vw;
+  font-size: 2.5em;
   color: #ffd54f;
-  text-shadow: 0 0 1vw #ffcc00, 0 0 2vw #ff9900;
+  text-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900;
   z-index: 5;
 }
 
@@ -32,11 +32,11 @@ body {
   height: 100%;
 }
 
-/* FLOR */
+/* FLOR (más grande) */
 .flor {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%) scale(1.15); /* MÁS GRANDES */
+  transform: translateX(-50%) scale(1.6);
   transform-origin: bottom center;
 }
 
@@ -56,47 +56,67 @@ body {
 
 /* PÉTALOS */
 .petalo {
+  width: 45px;
+  height: 90px;
   background: radial-gradient(circle, #ffeb3b, #ff9800);
   border-radius: 50%;
   position: absolute;
   transform-origin: bottom center;
-  box-shadow: 0 0 1vw #ffcc00; /* más brillo */
-  z-index: 2;
+  box-shadow: 0 0 12px #ffcc00;
 }
 
-/* CENTRO */
+/* CENTRO (más grande) */
 .centro {
+  width: 95px;
+  height: 95px;
   background: #5a3a0a;
   border-radius: 50%;
   position: absolute;
+  top: 40px;
+  left: -25px;
   z-index: 3;
 }
 
-/* 🌿 TALLO */
+/* 🌿 TALLO (más grueso y largo) */
 .tallo {
+  width: 14px;
+  height: 620px;
   background: linear-gradient(#66bb6a, #1b5e20);
   position: absolute;
-  border-radius: 1vw; /* más grueso visual */
+  top: 110px;
+  left: 50%;
   transform: translateX(-50%);
+  border-radius: 8px;
   z-index: 1;
 }
 
-/* HOJAS */
+/* HOJAS (más separadas) */
 .hoja {
+  width: 50px;
+  height: 25px;
   background: linear-gradient(#66bb6a, #1b5e20);
   border-radius: 50%;
   position: absolute;
 }
 
-.hoja.izq { transform: rotate(-30deg); }
-.hoja.der { transform: rotate(30deg); }
+.hoja.izq {
+  transform: rotate(-30deg);
+  left: -65px;
+}
+
+.hoja.der {
+  transform: rotate(30deg);
+  left: 45px;
+}
 
 /* DESTELLOS */
 .destello {
   position: absolute;
+  width: 6px;
+  height: 6px;
   background: gold;
   border-radius: 50%;
-  box-shadow: 0 0 1vw gold;
+  box-shadow: 0 0 10px gold;
   animation: subir 6s linear infinite;
   z-index: 0;
 }
@@ -104,10 +124,12 @@ body {
 /* CORAZONES */
 .corazon {
   position: absolute;
+  width: 20px;
+  height: 20px;
   background: gold;
   transform: rotate(45deg);
   animation: subir 8s linear infinite;
-  box-shadow: 0 0 1vw gold;
+  box-shadow: 0 0 10px gold;
   z-index: 0;
 }
 
@@ -115,22 +137,25 @@ body {
 .corazon::after {
   content: "";
   position: absolute;
+  width: 20px;
+  height: 20px;
   background: gold;
   border-radius: 50%;
 }
 
-.corazon::before { top: -50%; left: 0; }
-.corazon::after { top: 0; left: -50%; }
+.corazon::before { top: -10px; }
+.corazon::after { left: -10px; }
 
 @keyframes subir {
   0% { transform: translateY(0) rotate(45deg); opacity: 0; }
   50% { opacity: 1; }
-  100% { transform: translateY(-70vh) rotate(45deg); opacity: 0; }
+  100% { transform: translateY(-700px) rotate(45deg); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
+
 <div class="titulo">Feliz día de las Flores Amarillas ❤️</div>
 <div class="container" id="flores"></div>
 
