@@ -1,12 +1,12 @@
 const contenedor = document.getElementById("flores");
 
 const posiciones = [
-  { left: 50, bottom: 520, rot: 0 },
-  { left: 40, bottom: 480, rot: -25 },
-  { left: 60, bottom: 480, rot: 25 },
-  { left: 35, bottom: 440, rot: -35 },
-  { left: 65, bottom: 440, rot: 35 },
-  { left: 50, bottom: 410, rot: 10 }
+  { left: 50, bottom: 900, rot: 0 },
+  { left: 28, bottom: 820, rot: -25 },
+  { left: 72, bottom: 820, rot: 25 },
+  { left: 18, bottom: 740, rot: -35 },
+  { left: 82, bottom: 740, rot: 35 },
+  { left: 50, bottom: 680, rot: 10 }
 ];
 
 posiciones.forEach((pos) => {
