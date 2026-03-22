@@ -36,7 +36,8 @@ body {
 .flor {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(1.15); /* MÁS GRANDES */
+  transform-origin: bottom center;
 }
 
 /* 🌻 CABEZA */
@@ -59,7 +60,7 @@ body {
   border-radius: 50%;
   position: absolute;
   transform-origin: bottom center;
-  box-shadow: 0 0 0.5vw #ffcc00;
+  box-shadow: 0 0 1vw #ffcc00; /* más brillo */
   z-index: 2;
 }
 
@@ -75,7 +76,7 @@ body {
 .tallo {
   background: linear-gradient(#66bb6a, #1b5e20);
   position: absolute;
-  border-radius: 0.5vw;
+  border-radius: 1vw; /* más grueso visual */
   transform: translateX(-50%);
   z-index: 1;
 }
@@ -95,7 +96,7 @@ body {
   position: absolute;
   background: gold;
   border-radius: 50%;
-  box-shadow: 0 0 0.5vw gold;
+  box-shadow: 0 0 1vw gold;
   animation: subir 6s linear infinite;
   z-index: 0;
 }
@@ -106,7 +107,7 @@ body {
   background: gold;
   transform: rotate(45deg);
   animation: subir 8s linear infinite;
-  box-shadow: 0 0 0.5vw gold;
+  box-shadow: 0 0 1vw gold;
   z-index: 0;
 }
 
