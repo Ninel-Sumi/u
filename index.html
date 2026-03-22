@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -9,19 +9,27 @@ body {
   margin: 0;
   height: 100vh;
   overflow: hidden;
-  background: black;
   font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(270deg, #000000, #1a0f00, #000000);
+  background-size: 600% 600%;
+  animation: fondo 12s ease infinite;
+}
+
+@keyframes fondo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* TEXTO */
 .titulo {
   position: absolute;
-  top: 30px;
+  top: 3vh;
   width: 100%;
   text-align: center;
-  font-size: 2.5em;
+  font-size: 4vw;
   color: #ffd54f;
-  text-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900;
+  text-shadow: 0 0 1vw #ffcc00;
   z-index: 5;
 }
 
@@ -35,130 +43,105 @@ body {
 /* FLOR */
 .flor {
   position: absolute;
-  left: 50%;
   transform: translateX(-50%);
-}
-
-/* 🌻 CABEZA */
-.cabeza {
-  position: relative;
-  animation: balanceo 4s ease-in-out infinite;
   transform-origin: bottom center;
-  z-index: 2;
+  animation: balanceo 4s ease-in-out infinite;
+  z-index: 3;
 }
 
 @keyframes balanceo {
-  0% { transform: rotate(var(--rot)) rotate(-2deg); }
-  50% { transform: rotate(var(--rot)) rotate(2deg); }
-  100% { transform: rotate(var(--rot)) rotate(-2deg); }
+  0% { transform: translateX(-50%) rotate(var(--rot)) rotate(-2deg); }
+  50% { transform: translateX(-50%) rotate(var(--rot)) rotate(2deg); }
+  100% { transform: translateX(-50%) rotate(var(--rot)) rotate(-2deg); }
 }
 
 /* PÉTALOS */
 .petalo {
-  width: 45px;
-  height: 90px;
-  background: radial-gradient(circle, #ffeb3b, #ff9800);
-  border-radius: 50%;
   position: absolute;
-  transform-origin: bottom center;
-  box-shadow: 0 0 12px #ffcc00;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff176, #ffeb3b, #ffb300);
+  box-shadow: 0 0 0.3vw #ffeb3b, 0 0 0.5vw #ffb300;
+  transform-origin: center 60%;
+  z-index: 2;
 }
 
 /* CENTRO */
 .centro {
-  width: 70px;
-  height: 70px;
-  background: #5a3a0a;
-  border-radius: 50%;
   position: absolute;
-  top: 40px;
-  left: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #6d4c41, #3e2723);
   z-index: 3;
 }
 
-/* 🌿 TALLO PERFECTAMENTE ALINEADO */
+/* TALLO */
 .tallo {
-  width: 6px;
-  height: 420px;
-  background: linear-gradient(#66bb6a, #1b5e20);
   position: absolute;
-
-  top: 110px; /* ajustado para salir del centro */
-  left: 50%;
-  transform: translateX(-50%);
-
-  border-radius: 5px;
-  z-index: 1; /* detrás de la flor */
+  background: linear-gradient(#66bb6a, #1b5e20);
+  border-radius: 0.5vw;
+  transform-origin: top center;
+  z-index: 1;
 }
 
 /* HOJAS */
 .hoja {
-  width: 50px;
-  height: 25px;
+  position: absolute;
   background: linear-gradient(#66bb6a, #1b5e20);
   border-radius: 50%;
+}
+
+.hoja.izq { transform: rotate(-30deg); }
+.hoja.der { transform: rotate(30deg); }
+
+/* MOÑO */
+.mono {
   position: absolute;
-}
-
-.hoja.izq {
-  transform: rotate(-30deg);
-  left: -45px;
-}
-
-.hoja.der {
-  transform: rotate(30deg);
-  left: 25px;
+  background: #c77dff;
+  border-radius: 50%;
+  z-index: 6;
+  transform: translateX(-50%);
 }
 
 /* DESTELLOS */
 .destello {
   position: absolute;
-  width: 6px;
-  height: 6px;
   background: gold;
   border-radius: 50%;
-  box-shadow: 0 0 10px gold;
   animation: subir 6s linear infinite;
-  z-index: 0;
+  z-index: 1;
 }
 
 /* CORAZONES */
 .corazon {
   position: absolute;
-  width: 20px;
-  height: 20px;
   background: gold;
   transform: rotate(45deg);
   animation: subir 8s linear infinite;
-  box-shadow: 0 0 10px gold;
-  z-index: 0;
+  z-index: 1;
 }
 
 .corazon::before,
 .corazon::after {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
   background: gold;
   border-radius: 50%;
 }
 
-.corazon::before { top: -10px; }
-.corazon::after { left: -10px; }
+.corazon::before { top: -50%; left: 0; }
+.corazon::after { top: 0; left: -50%; }
 
 @keyframes subir {
-  0% { transform: translateY(0) rotate(45deg); opacity: 0; }
+  0% { transform: translateY(0) scale(0.7); opacity: 0; }
   50% { opacity: 1; }
-  100% { transform: translateY(-700px) rotate(45deg); opacity: 0; }
+  100% { transform: translateY(-70vh) scale(1); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
-<!-- Forzar actualización de GitHub Pages -->
-<div class="titulo">Feliz día de las Flores Amarillas ❤️</div>
+<div class="titulo">Feliz día de las Flores Amarillas 💛</div>
 <div class="container" id="flores"></div>
+<div class="mono" id="mono"></div>
 
 <script src="script.js"></script>
 </body>
